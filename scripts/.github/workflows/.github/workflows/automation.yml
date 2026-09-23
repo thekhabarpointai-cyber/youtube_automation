@@ -1,0 +1,24 @@
+name: YouTube Automation
+
+on:
+  workflow_dispatch:
+  schedule:
+    - cron: "0 4 * * *"
+    - cron: "0 9 * * *"
+    - cron: "0 14 * * *"
+
+jobs:
+  automation:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.12"
+
+      - name: Run automation
+        run: python main.py
